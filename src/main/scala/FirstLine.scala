@@ -9,11 +9,13 @@ object FirstLine {
 		val spark = new SparkContext(conf)
 		val data = spark.textFile("/tmp/data.csv")
 		val dataWithIndex = data.zipWithIndex
-		dataWithIndex.foreach { line =>
+		val a = dataWithIndex.map { line =>
 			if (line._2 == 0) {
 				new PrintWriter("/tmp/output.txt") { write(line._1); close }
 			}
+			line._2
 		}
+		println(a.first())
 		spark.stop()
 	}
 }
