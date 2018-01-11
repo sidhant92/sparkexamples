@@ -5,7 +5,7 @@ import java.io.PrintWriter
 
 object FirstLine {
 	def main(args: Array[String]) = {
-		val conf = new SparkConf().setAppName("Spark Word Counter").setMaster("local")
+		val conf = new SparkConf().setAppName("Spark First Line")
 		val spark = new SparkContext(conf)
 		val data = spark.textFile("/tmp/data.csv")
 		val dataWithIndex = data.zipWithIndex
